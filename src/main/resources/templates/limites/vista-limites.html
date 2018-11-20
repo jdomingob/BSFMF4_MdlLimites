@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <th:block th:include="layout/headGlobal :: head"/>
+    <th:block th:include="layout/headDataTables :: head"/>
+    <title>Limites</title>
+</head>
+<body>
+<div class="container_48">
+    <div class="contenedor">
+        <div class="contenedor-form">
+            <div class="titulo centrar-objeto btn-inline-set">
+                <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"
+                        onclick="parent.regresarMenuFrecuente();" type="submit" role="button" aria-disabled="false">
+                    <span class="ui-button-icon-left ui-icon ui-c ui-icon-arrow-1-w"></span>
+                    <span class="ui-button-text ui-c">ui-button</span></button>
+                <div>
+                    <h2 class="gris-b">Limites</h2>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-campos">
+            <div class="col-md-12 margin-left-4pct">
+                <div id="campos1Row" class="row margin-top-0-8">
+                    <div class="col-md-1 margin-top-0-8">
+                        <label for="txtAcuerdo" class="pull-right text-nowrap">Acuerdo:</label>
+                    </div>
+                    <div class="col-md-4 no-padding-left">
+                        <input type="text" id="txtAcuerdo" maxlength="30" class="form-control" disabled>
+                    </div>
+                    <div class="col-sm-2 no-padding-left">
+                        <input id="txtCentro" type="number" maxlength="10" class="form-control" disabled placeholder="Centro">
+                    </div>
+                    <div class="col-sm-2 no-padding-left">
+                        <input id="txtMoneda" type="text" maxlength="20" class="form-control" disabled placeholder="Moneda">
+                    </div>
+                </div>
+                <div id="campos2Row" class="row margin-top-0-8">
+                    <div class="col-md-1 margin-top-0-8">
+                        <label for="txtPrimerTitular" class="pull-right text-nowrap">Primer Titular:</label>
+                    </div>
+                    <div class="col-md-4 no-padding-left">
+                        <input type="text" id="txtPrimerTitular" class="form-control" disabled>
+                    </div>
+                </div>
+                <div id="campos3Row" class="row margin-top-0-8">
+                    <div class="col-md-1 margin-top-0-8">
+                        <label class="pull-right text-nowrap">Tipo Selección:</label>
+                    </div>
+                    <div class="col-md-2 no-padding-left">
+                        <select class=" selectpicker form-control " data-size="5" id="selectTipoSeleccion"
+                                data-live-search="true"
+                                data-maxOptions="true">
+                            <option value="-1">SELECCCIONE</option>
+                            <option th:each="tipoId : ${catalogoTipoId}" th:value="${tipoId.identificador}"
+                                    th:text="${tipoId.nombre}" th:data-subtext="${tipoId.descripcion}"></option>
+                        </select>
+                    </div>
+                    <div class="col-md-2 margin-top-0-8">
+                        <label class="pull-right text-nowrap">Moneda Límite:</label>
+                    </div>
+                    <div class="col-md-2 no-padding-left">
+                        <select class=" selectpicker form-control" data-size="5" id="selectMonedaLimite"
+                                data-live-search="true"
+                                data-maxOptions="true">
+                            <option value="-1">SELECCCIONE</option>
+                            <option th:each="tipoId : ${catalogoTipoId}" th:value="${tipoId.identificador}"
+                                    th:text="${tipoId.nombre}" th:data-subtext="${tipoId.descripcion}"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-10">
+                <table id="tablaAutorizacion" class="table table-responsive table-bordered width-100 margin-top-0-8">
+                    <thead>
+                    <tr>
+                        <th class="col-sm-2">Tipo Autorización</th>
+                        <th class="col-sm-1">Situación</th>
+                        <th class="col-sm-3">Importe</th>
+                        <th class="col-sm-1">Fecha Alta</th>
+                        <th class="col-sm-1">Fecha Vto</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="col-sm-2 botones-accion">
+                <div class="pt-10">
+                    <button type="button" id="buscarLimite" class=" form-control btn btn-primary btn-sm"
+                            onclick="buscarLimite()">Buscar
+                    </button>
+                </div>
+                <div class="botones-accion">
+                    <!--<button type="button" id="seleccionarLimite" class=" form-control btn btn-primary btn-sm"-->
+                            <!--onclick="seleccionarLimite()">Seleccionar-->
+                    <!--</button>-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+</div>
+
+<th:block th:include="limites/fragments/seleccionar-limite :: modalSeleccionarLimite"/>
+<script th:inline="javascript" th:src="@{/js/limites/vista-limites.js}"></script>
+<!--<script th:inline="javascript">var bsfOperador=[[${BSFOPERADOR}]];</script>-->
+</body>
+</html>

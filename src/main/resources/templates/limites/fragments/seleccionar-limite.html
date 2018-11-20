@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="es">
+<div th:fragment="modalSeleccionarLimite" class="modal-scroll">
+
+    <div class="modal fade" role="dialog" id="modalSeleccionarLimite">
+        <div class="modal-dialog modal-lg width-85pct" role="document">
+            <div class="modal-content modal-color padding-5pct">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="col-md-5">
+                        <h3 class="gris-b bold" id="tituloPersona">Seleccionar Límite</h3>
+                    </div>
+                </div>
+                <!-- MODAL BODY -->
+                <div class="modal-body">
+                    <div class="margin-top-0-8 col-md-offset-2">
+                        <div id="camposRowModalSel" class="row margin-top-0-8">
+                            <div class="col-md-1 margin-top-0-8">
+                                <label for="txtAcuerdoSelec" class="pull-right text-nowrap">Acuerdo:</label>
+                            </div>
+                            <div class="col-md-4 no-padding-left">
+                                <input type="text" id="txtAcuerdoSelec" maxlength="30" class="form-control noAlfanumericos" disabled>
+                            </div>
+                            <div class="col-sm-2 no-padding-left">
+                                <input id="txtCentroSelect" type="number" maxlength="10" class="form-control noAlfanumericos" disabled
+                                       placeholder="Centro">
+                            </div>
+                            <div class="col-sm-2 no-padding-left">
+                                <input id="txtMonedaSelect" type="text" maxlength="20" class="form-control noAlfanumericos" disabled
+                                       placeholder="Moneda">
+                            </div>
+                        </div>
+                        <div class="row margin-top-0-8">
+                            <div class="col-md-1 margin-top-0-8">
+                                <label for="txtPrimerTitularSelect" class="pull-right text-nowrap">Primer Titular:</label>
+                            </div>
+                            <div class="col-md-6 no-padding-left">
+                                <input type="text" id="txtPrimerTitularSelect" class="form-control noAlfanumericos" disabled>
+                            </div>
+                            <div class="col-md-2 no-padding-left">
+                                <button type="button" id="btnBuscar" onclick="buscar()" class="width-100 btn btn-primary">Buscar
+                                </button>
+                            </div>
+                        </div>
+                        <div class="margin-top-1-5" style="margin-left:-35px">
+                        <fieldset class=" scheduler-border z-depth-3">
+                            <legend class="scheduler-border">Datos</legend>
+                            <div class="margin-top-0-8 margin-left-5pct" style="margin-left:70px">
+                                <div class="row margin-top-0-8">
+                                    <div class="col-md-1 margin-top-0-8">
+                                        <label for="txtSituacion" class="pull-right text-nowrap">Situación:</label>
+                                    </div>
+                                    <div class="col-md-5 no-padding-left">
+                                        <input type="text" id="txtSituacion" class="form-control noAlfanumericos">
+                                    </div>
+                                </div>
+
+                                <div class="row margin-top-0-8">
+                                    <div class="col-md-1 margin-top-0-8">
+                                        <label for="txtImporteAut" class="pull-right text-nowrap">Importe
+                                            Autorizado:</label>
+                                    </div>
+                                    <div class="col-md-5 no-padding-left">
+                                        <input type="text" id="txtImporteAut" class="form-control noAlfanumericos">
+                                    </div>
+                                    <div class="col-md-3 no-padding-left" id="selectPersonaMoral">
+                                        <select class=" selectpicker form-control" data-size="5"
+                                                id="selectIdOficialModBusPer" data-live-search="true"
+                                                data-maxOptions="true">
+                                            <option value="-1">SELECCCIONE</option>
+                                            <option th:each="selectIdOficialModBusPer : ${catalogoTipoId}"
+                                                    th:value="${selectIdOficialModBusPer.identificador}"
+                                                    th:text="${selectIdOficialModBusPer.nombre}"
+                                                    th:data-subtext="${selectIdOficialModBusPer.descripcion}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row margin-top-0-8">
+                                    <div class="col-md-1 margin-top-0-8">
+                                        <label for="txtFechaAlta" class="pull-right text-nowrap">Fecha Alta:</label>
+                                    </div>
+                                    <div class="col-md-3 no-padding-left">
+                                        <input type="text" id="txtFechaAlta" class="form-control noAlfanumericos">
+                                    </div>
+                                    <div class="col-md-2 margin-top-0-8">
+                                        <label for="txtFechaVencimiento" class="pull-right text-nowrap">Fecha
+                                            Vencimiento:</label>
+                                    </div>
+                                    <div class="col-md-3 no-padding-left">
+                                        <input type="text" id="txtFechaVencimiento" class="form-control noAlfanumericos">
+                                    </div>
+                                </div>
+                                <div class="row margin-top-0-8">
+                                    <div class="col-md-1 margin-top-0-8">
+                                        <label for="txtLibre" class="pull-right text-nowrap">Texto Libre:</label>
+                                    </div>
+                                    <div class="col-md-8 no-padding-left">
+                                        <input type="text" id="txtLibre" class="form-control noAlfanumericos">
+                                    </div>
+                                </div>
+                                <div class="row margin-top-0-8">
+                                    <div class="col-md-1 margin-top-0-8">
+                                        <label for="txtTipoAutorizacion" class="pull-right text-nowrap">Tipo
+                                            Autorización:</label>
+                                    </div>
+                                    <div class="col-md-5 no-padding-left">
+                                        <input type="text" id="txtTipoAutorizacion" class="form-control noAlfanumericos">
+                                    </div>
+                                </div>
+                                <div class="row margin-top-0-8">
+                                    <div class="col-md-1 margin-top-0-8">
+                                        <label class="pull-right text-nowrap">C Operación:</label>
+                                    </div>
+                                    <div class="col-md-3 no-padding-left">
+                                        <input type="text" id="txtOperacion" class="form-control noAlfanumericos">
+                                    </div>
+                                    <div class="col-md-5 no-padding-left">
+                                        <input type="text" id="txtOperacion2" class="form-control noAlfanumericos">
+                                    </div>
+                                </div>
+                                <div class="row margin-top-0-8">
+                                    <div class="col-md-1 margin-top-0-8">
+                                        <label for="txtCodeAutorizacion" class="pull-right text-nowrap">Código
+                                            Autorización:</label>
+                                    </div>
+                                    <div class="col-md-3 no-padding-left">
+                                        <input type="text" id="txtCodeAutorizacion" class="form-control noAlfanumericos">
+                                    </div>
+                                    <div class="col-md-2 margin-top-0-8">
+                                        <label for="txtNumEmpleado" class="pull-right text-nowrap">Número
+                                            Empleado:</label>
+                                    </div>
+                                    <div class="col-md-3 no-padding-left">
+                                        <input type="text" id="txtNumEmpleado" class="form-control noAlfanumericos">
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        </div>
+                        <div class="modal-footer row margin-top-0-8 pull-right">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Regresar</button>
+                                <button type="button" id="btnSuprimir" class="btn btn-primary" onclick="suprimirLimite()" data-dismiss="modal">Suprimir</button>
+                            <button id="btnBuscarLimite" type="button" onclick="altaLimite()"
+                                    class="pull-right btn btn-primary">Buscar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- MODAL BODY ENDS -->
+        </div>
+    </div>
+</div>
