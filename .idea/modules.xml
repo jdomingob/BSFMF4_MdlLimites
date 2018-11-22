@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/BSFMF4_MdlLimites.iml" filepath="$PROJECT_DIR$/BSFMF4_MdlLimites.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BSFMF4_MdlLimites_main.iml" filepath="$PROJECT_DIR$/.idea/modules/BSFMF4_MdlLimites_main.iml" group="BSFMF4_MdlLimites" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BSFMF4_MdlLimites_test.iml" filepath="$PROJECT_DIR$/.idea/modules/BSFMF4_MdlLimites_test.iml" group="BSFMF4_MdlLimites" />
+    </modules>
+  </component>
+</project>

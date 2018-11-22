@@ -96,7 +96,7 @@ var acuerdo = {
 var campoSeleccionado;
 //inicia document Ready
 $(document).ready(function () {
-    cargarTablaLimites(json);
+    // cargarTablaLimites(json);
     cargarAcuerdo();
 });
 
@@ -144,7 +144,7 @@ function seleccionarLimite() {
     }
 }
 
-function buscarLimite() {
+function nuevoLimite() {
     $('#modalSeleccionarLimite input[type=text]').val("");
     $('#modalSeleccionarLimite input[type=number]').val("");
     $("#modalSeleccionarLimite").modal({backdrop: false});
@@ -192,6 +192,10 @@ function suprimirLimite() {
     });
 }
 
+function consultarLimites(){
+    cargarTablaLimites(json)
+}
+
 var table;
 function cargarTablaLimites(datos) {
      table = $('#tablaAutorizacion').DataTable(
@@ -229,10 +233,10 @@ function buscarRelPersona() {
             usuario:"DESA0003",
             password:"CAPAP023",
             entidad:"0166",
-            terminal:"12502904"
+            terminal:"12502904",
             numSecAc:"70719620",
             numSec:"0",
-            stdChar10:"ACTIVO",
+            stdChar10:"ACTIVO"
         };
         console.log(JSON.stringify(busquedaRequest));
         $.ajax({
@@ -303,4 +307,26 @@ function buscarRelPersona() {
         });
     // }
 
+}
+
+function post(path, parameters) {
+    var form = $('<form></form>');
+
+    form.attr("method", "post");
+    form.attr("action", path);
+
+    $.each(parameters, function(key, value) {
+        var field = $('<input></input>');
+
+        field.attr("type", "hidden");
+        field.attr("name", key);
+        field.attr("value", value);
+
+        form.append(field);
+    });
+
+    // The form needs to be a part of the document in
+    // order for us to be able to submit it.
+    $(document.body).append(form);
+    form.submit();
 }

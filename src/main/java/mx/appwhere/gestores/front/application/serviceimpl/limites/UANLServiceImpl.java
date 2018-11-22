@@ -1,13 +1,12 @@
-package mx.appwhere.gestores.front.application.dto.consultaLimitesDto;
+package mx.appwhere.gestores.front.application.serviceimpl.limites;
 
 import mx.appwhere.gestores.front.domain.services.ConverterService;
-import mx.appwhere.gestores.front.domain.services.UANLService;
 import mx.appwhere.gestores.front.domain.util.RestClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UANLServiceImpl implements UANLService {
+public class UANLServiceImpl {
 
     private RestClient restClient;
 

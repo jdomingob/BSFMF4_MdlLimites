@@ -161,3 +161,10 @@ label
 .modal-scroll{
 	overflow-y: scroll !important;
 }
+
+.btnBuscador {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	margin: 0 auto;
+}
