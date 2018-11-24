@@ -1,6 +1,10 @@
 package mx.appwhere.gestores.front.application.serviceimpl;
+import mx.appwhere.gestores.front.application.constants.messages.ServiceMessages;
+import mx.appwhere.gestores.front.application.dto.AttrCatalogueDto;
+import mx.appwhere.gestores.front.application.dto.AttrCatalogueSetDto;
 import mx.appwhere.gestores.front.domain.constants.DomainConstants;
 import mx.appwhere.gestores.front.domain.constants.DomainError;
+import mx.appwhere.gestores.front.domain.exceptions.AplicationServiceException;
 import mx.appwhere.gestores.front.domain.exceptions.ConnectionException;
 import mx.appwhere.gestores.front.domain.exceptions.RestResponseException;
 import mx.appwhere.gestores.front.domain.exceptions.ajax.AjaxException;
@@ -11,6 +15,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.Objects;
 
 
 @Service
@@ -54,27 +60,51 @@ public class GenericServiceImpl implements GenericService {
 		}
 	}
 
-//	@Override
-//	public AttrCatalogueDto[] consultarCatalogo(String uri) {
-//		 try {
-//		      UriComponents uriComponents = UriComponentsBuilder.fromUriString(uri).build();
-//		      HttpHeaders headers = new HttpHeaders();
-//		      headers.add("Accept", "application/vnd.pri.remittances.v1.0+json");
-//		      //headers.add("content-type", "application/json;  charset=utf-8");
-//		      return restClient.get(uriComponents, headers,AttrCatalogueDto[] .class);
-//		 } catch (RestResponseException ex) {
-//            ex.getApiError().ifPresent(apiError -> {
-//                if (Objects.nonNull(apiError.getErrorCode())) {
-//                    DomainError.getDomainError(apiError.getErrorCode()).ifPresent(domainError -> {
-//                        if (domainError.equals(DomainError.ESB_ERROR)) {
-//                                throw new AplicationServiceException(
-//                                    ServiceMessages.ESB_ERROR);
-//                        }
-//                    });
-//                }
-//            });
-//          throw new ConnectionException(ServiceMessages.CONNECTION_ERROR);
-//        }
-//	}
+	@Override
+	public AttrCatalogueDto[] consultarCatalogo(String uri) {
+		 try {
+		      UriComponents uriComponents = UriComponentsBuilder.fromUriString(uri).build();
+		      HttpHeaders headers = new HttpHeaders();
+		      headers.add("Accept", "application/vnd.pri.remittances.v1.0+json");
+		      //headers.add("content-type", "application/json;  charset=utf-8");
+		      return restClient.get(uriComponents, headers,AttrCatalogueDto[] .class);
+		 } catch (RestResponseException ex) {
+            ex.getApiError().ifPresent(apiError -> {
+                if (Objects.nonNull(apiError.getErrorCode())) {
+                    DomainError.getDomainError(apiError.getErrorCode()).ifPresent(domainError -> {
+                        if (domainError.equals(DomainError.ESB_ERROR)) {
+                                throw new AplicationServiceException(
+                                    ServiceMessages.ESB_ERROR);
+                        }
+                    });
+                }
+            });
+          throw new ConnectionException(ServiceMessages.CONNECTION_ERROR);
+        }
+	}
+
+	@Override
+	public AttrCatalogueSetDto[] consultarCatalogoSet(String uri) {
+		try {
+			UriComponents uriComponents = UriComponentsBuilder.fromUriString(uri).build();
+			HttpHeaders headers = new HttpHeaders();
+			headers.add("Accept", "application/vnd.pri.remittances.v1.0+json");
+			//headers.add("content-type", "application/json;  charset=utf-8");
+			return restClient.get(uriComponents, headers,AttrCatalogueSetDto[] .class);
+		} catch (RestResponseException ex) {
+			ex.getApiError().ifPresent(apiError -> {
+				if (Objects.nonNull(apiError.getErrorCode())) {
+					DomainError.getDomainError(apiError.getErrorCode()).ifPresent(domainError -> {
+						if (domainError.equals(DomainError.ESB_ERROR)) {
+							throw new AplicationServiceException(
+									ServiceMessages.ESB_ERROR);
+						}
+					});
+				}
+			});
+			throw new ConnectionException(ServiceMessages.CONNECTION_ERROR);
+		}
+	}
+
 
 }

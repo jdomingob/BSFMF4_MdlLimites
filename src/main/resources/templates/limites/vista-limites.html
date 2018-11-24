@@ -22,81 +22,18 @@
         </div>
         <div class="contenedor-campos">
 
-
-<!--
-            <div class="col-md-10 margin-left-4pct">
-                <div id="campos1Row col-md-10" class="row margin-top-0-8">
-                    <div class="col-md-1 margin-top-0-8">
-                        <label for="txtAcuerdo" class="pull-right text-nowrap">Acuerdo:</label>
-                    </div>
-                    <div class="col-md-2 no-padding-left">
-                        <input type="text" id="txtAcuerdo" maxlength="30" class="form-control" disabled>
-                    </div>
-                    <div class="col-md-1 no-padding-left">
-                        <button type="button" class="btn btn-primary btn-circle btn-xs" id="btnBusquedas1" onclick="buscarPersona();">
-                            <i class="fa fa-search fa-16" aria-hidden="true"></i><i class="fa fa-bars" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                    <div class="col-sm-2 no-padding-left">
-                        <input id="txtCentro" type="number" maxlength="10" class="form-control" disabled placeholder="Centro">
-                    </div>
-                    <div class="col-sm-2 no-padding-left">
-                        <input id="txtMoneda" type="text" maxlength="20" class="form-control" disabled placeholder="Moneda">
-                    </div>
-                </div>
-                <div id="campos2Row col-md-10" class="row margin-top-0-8">
-                    <div class="col-md-1 margin-top-0-8">
-                        <label for="txtPrimerTitular" class="pull-right text-nowrap">Primer Titular:</label>
-                    </div>
-                    <div class="col-md-4 no-padding-left">
-                        <input type="text" id="txtPrimerTitular" class="form-control" disabled>
-                    </div>
-                </div>
-                <div id="campos3Row col-md-10" class="row margin-top-0-8">
-                    <div class="col-md-1 margin-top-0-8">
-                        <label class="pull-right text-nowrap">Tipo Selección:</label>
-                    </div>
-                    <div class="col-md-2 no-padding-left">
-                        <select class=" selectpicker form-control " data-size="5" id="selectTipoSeleccion"
-                                data-live-search="true"
-                                data-maxOptions="true">
-                            <option value="-1">SELECCCIONE</option>
-                            <option th:each="tipoId : ${catalogoTipoId}" th:value="${tipoId.identificador}"
-                                    th:text="${tipoId.nombre}" th:data-subtext="${tipoId.descripcion}"></option>
-                        </select>
-                    </div>
-                    <div class="col-md-2 margin-top-0-8">
-                        <label class="pull-right text-nowrap">Moneda Límite:</label>
-                    </div>
-                    <div class="col-md-2 no-padding-left">
-                        <select class=" selectpicker form-control" data-size="5" id="selectMonedaLimite"
-                                data-live-search="true"
-                                data-maxOptions="true">
-                            <option value="-1">SELECCCIONE</option>
-                            <option th:each="tipoId : ${catalogoTipoId}" th:value="${tipoId.identificador}"
-                                    th:text="${tipoId.nombre}" th:data-subtext="${tipoId.descripcion}"></option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 col-xs-2 pull-right botones-accion">
-                <button type="button" id="consultarAcuerdo" class="btn btn-primary btn-xl btnBuscador text-center"
-                        onclick="buscarLimite()">Consultar
-                </button>
-            </div>
-          -->
-            <div class="row margin-left-4pct">
-                <div class="col-md-9 col-xs-10">
+            <div class="row margin-left-2pct">
+                <div class="col-md-7">
                     <div class="row">
-                        <div class="col-md-1 margin-top-0-8">
+                        <div class="col-md-2 margin-top-0-8">
                             <label for="txtAcuerdo" class="pull-right text-nowrap">Acuerdo:</label>
                         </div>
-                        <div class="col-md-2 no-padding-left">
-                            <input type="text" id="txtAcuerdo" maxlength="30" class="form-control" disabled>
+                        <div class="col-md-5 no-padding-left">
+                            <input type="number" id="txtAcuerdo" maxlength="30" min="0" class="form-control soloNumeros" onpaste="return isNumber(event)" onkeydown="return isNumber(event)" ondrop="return isNumber(event)">
                         </div>
                         <div class="col-md-1 no-padding-left">
                             <form method="POST" >
-                            <button type="button" class="btn btn-primary btn-circle btn-xs" id="btnBusquedas1" onclick="post('http://172.26.9.98:7171/BsfPortalSucursalesCriteriosBusqueda/?BSFOPERADOR=ig6bpA59BmxGAIwqUPcX5SRRxl3om/4vKuu6jFTBSvU5gKmGr1uJw8UtEY0a81/ln/qt7jxIHGE9hcv8i60x9hLg98Nya0V+1R37IoWKsKCPp46zTC+d7J691ocOWC1e2Kvu/X+RqBK6QaL2dueI7PqN6gnTiOWjH25wbFcqdooyaEC2G7mD+IJ2n6VzWMHnjaBCm2Qw+EPmlcUmxWWfwo6H6Y2kOT/q0/Mgym1CKAJ5rVj2wq+f7L3R5M/vsI4LhrN1xQx8O7UO92N0P0CH7HFpw8cK0444M7KwuXVqgShAHiwTOfAPwvrsJU9hBGPqSPzqT0IH+J7jXaeYJvhTUBmmpoJxVaVhudIK3qe4B7tcWMj8pZjPhRF4PJwgDvzozLBZzUaU+9iWTaHRLJTyFpxcRx3jP4BBiSJD+O9RBNPpjr2zNOX7DmM3zd1pjD3CtPBaDtS6hVvaXLhBxa/H2Y/Lxkb8oFOL0ZggmXXwXQkCLabx28/6d5TtrO47UK1yTw3ykEhoHsghFXoz4fyNdPBDu14R/0bd1OytRwuJnMdz6ixpUpStoTBu/pz6ODP9v1a/RIoMZeh2aji6Sb1Rqjr7R9nDIPGjjTLoxOMvqByFbKl1B87oTo3Z4/m/ZlLM9bcr8eIYOjMvxRDmjoO1cseGswlmJ2AG5IDbDJ2oZM9sgtrdMFM/45g/qTTf391AiC+EJROM2JYFmIYMFX7ojFy1VWf0aL1HTPflCvjRkQK1rDJ5b8Qp4aUyqBKYuXghGiCgfLOgQneTigApdNo+lw==');">
+                            <button type="button" class="btn btn-primary btn-circle btn-xs" id="btnBusquedas1" onclick="post('http://172.26.9.98:7171/BsfPortalSucursalesCriteriosBusqueda/?BSFOPERADOR=ig6bpA59BmxGAIwqUPcX5SRRxl3om/4vKuu6jFTBSvU5gKmGr1uJw8UtEY0a81/ln/qt7jxIHGE9hcv8i60x9m+mg/Z4N+1nx0qlofT0nH74sfNW6qh2hEr79LhhvpL0HJLnLxUccp1vLRfvIQwT4hDSnsEmIikTfZaBccBbW95CWNSBgFmGaQIeGwRQER0c2nnY9BJSbapsBU3FuBk6axOITlskSr3SV6L32rGYmpg6KAEkZqCMXf9u8W+jAWJBcVWLPYBlNSzvMjtQBFR7jM5ua2UovoJGblKp850LHtCS8cn9LEBamDxha4G81DGmmZzy/a+nTuj24xOakcP0XO3s6eZsEy/VBKjYxZ89eoM9iLFKpMD5vzDi3CdV2UBxo2zjCUaSDoQL/G+c7VNDjFrXPnKqZ+tIvSFjdwdbeVG2+jCqTWHq5AOlTsiQvrRS0tteHzsPYBKhn6sMV9mVXaUndWOQD6YqqE/CBGOQ8Z9VbvJGntkYYBNSlJ99YU9924tVv5ciycxzIb7my85Rg1BrByuFrIrNbUN7pc9+d4UQ2ezLPShxzw23wQQ6691jklykMEMklA3tEoANh41a2A==');">
                                 <i class="fa fa-search fa-16" aria-hidden="true"></i><i class="fa fa-bars" aria-hidden="true"></i>
                             </button>
                             </form>
@@ -110,42 +47,46 @@
                     </div>
                     <br>
                     <div class="row">
-                        <div class="col-md-1 margin-top-0-8">
+                        <div class="col-md-2 margin-top-0-8">
                             <label for="txtPrimerTitular" class="pull-right text-nowrap">Primer Titular:</label>
                         </div>
-                        <div class="col-md-4 no-padding-left">
+                        <div class="col-md-10 no-padding-left">
                             <input type="text" id="txtPrimerTitular" class="form-control" disabled>
                         </div>
                     </div>
                     <br>
                     <div class="row">
-                        <div class="col-md-1 margin-top-0-8">
+                        <div class="col-md-2 margin-top-0-8">
                             <label class="pull-right text-nowrap">Tipo Selección:</label>
                         </div>
-                        <div class="col-md-2 no-padding-left">
-                            <select class=" selectpicker form-control " data-size="5" id="selectTipoSeleccion"
-                                    data-live-search="true"
+                        <div class="col-md-4 no-padding-left">
+                            <select class=" selectpicker form-control" data-size="5"
+                                    id="selectTipoSeleccion" data-live-search="true"
                                     data-maxOptions="true">
                                 <option value="-1">SELECCCIONE</option>
-                                <option th:each="tipoId : ${catalogoTipoId}" th:value="${tipoId.identificador}"
-                                        th:text="${tipoId.nombre}" th:data-subtext="${tipoId.descripcion}"></option>
+                                <option value="1">ACTIVO</option>
+                                <option value="2">INACTIVO</option>
+                                <option value="3">VENCIDO</option>
+                                <option value="4">CANCELADO</option>
+                                <option value="5">TODOS</option>
                             </select>
                         </div>
                         <div class="col-md-2 margin-top-0-8">
                             <label class="pull-right text-nowrap">Moneda Límite:</label>
                         </div>
-                        <div class="col-md-2 no-padding-left">
-                            <select class=" selectpicker form-control" data-size="5" id="selectMonedaLimite"
-                                    data-live-search="true"
+                        <div class="col-md-4 no-padding-left">
+                            <select class=" selectpicker form-control" data-size="5"
+                                    id="selectMonedas" data-live-search="true"
                                     data-maxOptions="true">
                                 <option value="-1">SELECCCIONE</option>
-                                <option th:each="tipoId : ${catalogoTipoId}" th:value="${tipoId.identificador}"
-                                        th:text="${tipoId.nombre}" th:data-subtext="${tipoId.descripcion}"></option>
+                                <option th:each="selectMonedas : ${catalogoMonedas}"
+                                        th:text="${selectMonedas.codigo}"
+                                        th:data-subtext="${selectMonedas.descripcion}"></option>
                             </select>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-xs-2 text-center ">
+                <div class="col-md-3 col-xs-2 text-center">
                     <button type="button" class="btn btn-primary btn-xl btnBuscador" id="btnBusquedas" onclick="consultarLimites();">
                         <h3>
                             <i class="fa fa-search" style="font-size: 55px;"></i>
@@ -154,15 +95,19 @@
                     </button>
                 </div>
             </div>
-            <div class="col-sm-10">
+            <div class="col-sm-10 margin-top-0-8">
                 <table id="tablaAutorizacion" class="table table-responsive table-bordered width-100 margin-top-0-8">
                     <thead>
                     <tr>
                         <th class="col-sm-2">Tipo Autorización</th>
                         <th class="col-sm-1">Situación</th>
-                        <th class="col-sm-3">Importe</th>
+                        <th class="col-sm-1">Importe</th>
                         <th class="col-sm-1">Fecha Alta</th>
                         <th class="col-sm-1">Fecha Vto</th>
+                        <th class="col-sm-1">C Operaciones</th>
+                        <th class="col-sm-1">Concepto</th>
+                        <th class="col-sm-1">Número de Autorización</th>
+                        <th class="col-sm-1">Empleado</th>
                     </tr>
                     </thead>
                 </table>
@@ -170,7 +115,7 @@
             <div class="col-sm-2 botones-accion">
                 <div class="pt-10">
                     <button type="button" id="nuevoLimite" class=" form-control btn btn-primary btn-sm"
-                            onclick="nuevoLimite()">Nuevo Límite
+                            onclick="nuevoLimite()" disabled>Nuevo Límite
                     </button>
                 </div>
                 <div class="botones-accion">
@@ -189,6 +134,7 @@
 
 <th:block th:include="limites/fragments/seleccionar-limite :: modalSeleccionarLimite"/>
 <script th:inline="javascript" th:src="@{/js/limites/vista-limites.js}"></script>
-<!--<script th:inline="javascript">var bsfOperador=[[${BSFOPERADOR}]];</script>-->
+<script th:inline="javascript">var bsfOperador=[[${bsfOperador}]];</script>
+<script th:inline="javascript">var catalogoOperaciones=[[${catalogoOperaciones}]];</script>
 </body>
 </html>

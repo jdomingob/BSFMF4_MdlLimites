@@ -32,3 +32,4 @@ wso2:
     war2:
       context-path: /war2
       funcionalidad1: ${wso2.scheme}://${wso2.as.host}:${wso2.as.port}${wso2.as.war2.context-path}/funcionalidad1
+

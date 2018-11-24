@@ -23,10 +23,10 @@
                 <div class="row">
                     <div class="grid_48">
                         <form method="POST" id="formMain">
-                            <div class="row-flex">
-                                <div class="grid_24">
-                                    <input name="BSFOPERADOR" id="BFOPERADOR" class="form-control" th:value="${BSFOPERADOR}"/>
-                                </div>
+                                <div class="row-flex">
+                                    <div class="grid_24">
+                                        <input name="BSFOPERADOR" id="BFOPERADOR" class="form-control" th:value="${BSFOPERADOR}"/>
+                                    </div>
                                 <div class="grid_24">
                                     <select name="opcion" class="form-control" id="option">
                                         <option th:value="@{/vista-principal}">Vista Principal - Gestores</option>
@@ -46,6 +46,7 @@
         </div>
     </div>
 </div>
+<script th:inline="javascript">var bsfOperador=[[${BSFOPERADOR}]];</script>
 <script th:inline="javascript" th:src="@{/js/main/main.js}"></script>
 </body>
 </html>

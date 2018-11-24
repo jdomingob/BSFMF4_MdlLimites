@@ -7,4 +7,5 @@ public interface Util<T> {
     Object jsonToObject(T objectRes, String json, ArrayList<String> nodos);
     Object jsonToObject(T objectRes, String json);
     String objectToJson(Object object);
+    public boolean checarNulos(T obj);
 }

@@ -5,7 +5,11 @@ var json = [
         "situación": "ACTIVO",
         "importe": "$6,000.00",
         "fechaAlta": "01/09/2015",
-        "fechaVto": "01/10/2017"
+        "fechaVto": "01/10/2017",
+        "cOperaciones": "123",
+        "concepto": "asdadsf",
+        "numAutorizacion": "123",
+        "empleado": "654321"
     },
     {
         "id": 2,
@@ -13,63 +17,95 @@ var json = [
         "situación": "ACTIVO",
         "importe": "$8,000.00",
         "fechaAlta": "01/09/2015",
-        "fechaVto": "01/10/2018"
+        "fechaVto": "01/10/2018",
+        "cOperaciones": "123",
+        "concepto": "asdadsf",
+        "numAutorizacion": "123",
+        "empleado": "654321"
     },
     {
         "id": 3,
         "tipoAutorización": "AUTORIZACIÓN MASIVA",
-        "situación": "ACTIVO",
+        "situación": "INACTIVO",
         "importe": "$10,000.00",
         "fechaAlta": "01/09/2015",
-        "fechaVto": "01/10/2018"
+        "fechaVto": "01/10/2018",
+        "cOperaciones": "123",
+        "concepto": "asdadsf",
+        "numAutorizacion": "123",
+        "empleado": "654321"
     },
     {
         "id": 4,
         "tipoAutorización": "AUTORIZACIÓN MASIVA",
-        "situación": "NO ACTIVO",
+        "situación": "INACTIVO",
         "importe": "$110,000.00",
         "fechaAlta": "01/09/2015",
-        "fechaVto": "01/10/2018"
+        "fechaVto": "01/10/2018",
+        "cOperaciones": "123",
+        "concepto": "asdadsf",
+        "numAutorizacion": "123",
+        "empleado": "654321"
     },
     {
         "id": 5,
         "tipoAutorización": "AUTORIZACIÓN MASIVA",
-        "situación": "NO ACTIVO",
+        "situación": "CANCELADO",
         "importe": "$1,000.00",
         "fechaAlta": "01/09/2015",
-        "fechaVto": "01/10/2018"
+        "fechaVto": "01/10/2018",
+        "cOperaciones": "123",
+        "concepto": "asdadsf",
+        "numAutorizacion": "123",
+        "empleado": "654321"
     },
     {
         "id": 6,
         "tipoAutorización": "AUTORIZACIÓN MASIVA",
-        "situación": "NO ACTIVO",
+        "situación": "CANCELADO",
         "importe": "$13,000.00",
         "fechaAlta": "01/09/2015",
-        "fechaVto": "01/10/2018"
+        "fechaVto": "01/10/2018",
+        "cOperaciones": "123",
+        "concepto": "asdadsf",
+        "numAutorizacion": "123",
+        "empleado": "654321"
     },
     {
         "id": 7,
         "tipoAutorización": "AUTORIZACIÓN MASIVA",
-        "situación": "ACTIVO",
+        "situación": "INACTIVO",
         "importe": "$14,000.00",
         "fechaAlta": "01/09/2015",
-        "fechaVto": "01/10/2018"
+        "fechaVto": "01/10/2018",
+        "cOperaciones": "123",
+        "concepto": "asdadsf",
+        "numAutorizacion": "123",
+        "empleado": "654321"
     },
     {
         "id": 8,
         "tipoAutorización": "AUTORIZACIÓN MASIVA",
-        "situación": "ACTIVO",
+        "situación": "VENCIDO",
         "importe": "$14,000.00",
         "fechaAlta": "01/09/2015",
-        "fechaVto": "01/10/2018"
+        "fechaVto": "01/10/2018",
+        "cOperaciones": "123",
+        "concepto": "asdadsf",
+        "numAutorizacion": "123",
+        "empleado": "654321"
     },
     {
         "id": 9,
         "tipoAutorización": "AUTORIZACIÓN MASIVA",
-        "situación": "ACTIVO",
+        "situación": "VENCIDO",
         "importe": "$14,000.00",
         "fechaAlta": "01/09/2015",
-        "fechaVto": "01/10/2018"
+        "fechaVto": "01/10/2018",
+        "cOperaciones": "123",
+        "concepto": "asdadsf",
+        "numAutorizacion": "123",
+        "empleado": "654321"
     },
     {
         "id": 10,
@@ -77,27 +113,39 @@ var json = [
         "situación": "ACTIVO",
         "importe": "$14,000.00",
         "fechaAlta": "01/09/2015",
-        "fechaVto": "01/10/2018"
+        "fechaVto": "01/10/2018",
+        "cOperaciones": "123",
+        "concepto": "asdadsf",
+        "numAutorizacion": "123",
+        "empleado": "654321"
     },
     {
         "id": 11,
         "tipoAutorización": "AUTORIZACIÓN MASIVA",
-        "situación": "NO ACTIVO",
+        "situación": "INACTIVO",
         "importe": "$60,000.00",
         "fechaAlta": "01/09/2015",
-        "fechaVto": "01/10/2018"
+        "fechaVto": "01/10/2018",
+        "cOperaciones": "123",
+        "concepto": "asdadsf",
+        "numAutorizacion": "123",
+        "empleado": "654321"
     }];
-var acuerdo = {
-    acuerdo:  "0070718920",
-    centro:  5029,
-    moneda:  "MXN",
-    primerTitular:  "LUIS PEREZ MOTA"
-}
+var clean = [{}];
+// var acuerdo = {
+//     acuerdo:  "0070718920",
+//     centro:  5029,
+//     moneda:  "MXN",
+//     nombre:  "LUIS PEREZ MOTA"
+// }
 var campoSeleccionado;
 //inicia document Ready
 $(document).ready(function () {
-    // cargarTablaLimites(json);
-    cargarAcuerdo();
+    cargarTablaLimites();
+    // $('#txtAcuerdo').on("cut copy paste",function(e) {
+    //     e.preventDefault("");
+    // });
+
 });
 
 $('#tablaAutorizacion').on('click', 'tr', function () {
@@ -106,11 +154,10 @@ $('#tablaAutorizacion').on('click', 'tr', function () {
     seleccionarLimite();
 });
 
-function cargarAcuerdo() {
-    $('#txtAcuerdo').val(acuerdo.acuerdo);
+function cargarAcuerdo(acuerdo) {
     $('#txtCentro').val(acuerdo.centro);
     $('#txtMoneda').val(acuerdo.moneda);
-    $('#txtPrimerTitular').val(acuerdo.primerTitular);
+    $('#txtPrimerTitular').val(acuerdo.nombre);
 }
 
 function seleccionarLimite() {
@@ -130,10 +177,12 @@ function seleccionarLimite() {
         $("#modalSeleccionarLimite").modal({backdrop: false})
                 // $('#').val(campoSeleccionado.tipoAutorización);
                 // $('input[type=text]').val("");
-                $('#txtAcuerdoSelec').val(acuerdo.acuerdo);
-                $('#txtCentroSelect').val(acuerdo.centro);
-                $('#txtMonedaSelect').val(acuerdo.moneda);
-                $('#txtPrimerTitularSelect').val(acuerdo.primerTitular);
+                $('#datosLimite input[type=text]').prop('disabled', true);
+                $('#datosLimite select').prop('disabled', true);
+                $('#txtAcuerdoSelec').val($('#txtAcuerdo').val());
+                $('#txtCentroSelect').val($('#txtCentro').val());
+                $('#txtMonedaSelect').val($('#txtMoneda').val());
+                $('#txtPrimerTitularSelect').val($('#txtPrimerTitular').val());
                 $('#txtSituacion').val(campoSeleccionado.situación);
                 $('#txtImporteAut').val(campoSeleccionado.importe);
                 $('#txtFechaAlta').val(campoSeleccionado.fechaAlta);
@@ -145,13 +194,22 @@ function seleccionarLimite() {
 }
 
 function nuevoLimite() {
-    $('#modalSeleccionarLimite input[type=text]').val("");
-    $('#modalSeleccionarLimite input[type=number]').val("");
+
+    $('#datosLimite input[type=text]').val("");
+    $('#datosLimite input[type=number]').val("");
+    $('#datosLimite input[type=text]').prop('disabled', false);
+    $('#datosLimite select').prop('disabled', false);
+    $('#selectMonedasModalSelect').val("-1").selectpicker("refresh");
+    $('#selectCOperaciones').val("-1").selectpicker("refresh");
+    $('#txtAcuerdoSelec').val($('#txtAcuerdo').val());
+    $('#txtCentroSelect').val($('#txtCentro').val());
+    $('#txtMonedaSelect').val($('#txtMoneda').val());
+    $('#txtPrimerTitularSelect').val($('#txtPrimerTitular').val());
     $("#modalSeleccionarLimite").modal({backdrop: false});
-    $('#txtAcuerdoSelec').prop('disabled', false);
-    $('#txtCentroSelect').prop('disabled', false);
-    $('#txtMonedaSelect').prop('disabled', false);
-    $('#txtPrimerTitularSelect').prop('disabled', false);
+    $('#txtAcuerdoSelec').prop('disabled', true);
+    $('#txtCentroSelect').prop('disabled', true);
+    $('#txtMonedaSelect').prop('disabled', true);
+    $('#txtPrimerTitularSelect').prop('disabled', true);
     $('#btnSuprimir').addClass('hide');
     $('#btnBuscarLimite').removeClass('hide');
 }
@@ -192,8 +250,52 @@ function suprimirLimite() {
     });
 }
 
+$('#txtAcuerdo').bind("enterKey",function(e){
+    var acuerdo =  $('#txtAcuerdo').val();
+    var request = {acuerdo: acuerdo};
+    $.ajax({
+        contentType: 'application/json; charset=UTF-8',
+        data: JSON.stringify(request),
+        url: "/BsfLimites/consultaDatosPorAcuerdo",
+        type: "post",
+        beforeSend: function () {
+            mostrarBarraProgreso();
+        },
+        success: function (data) {
+            CerrarBarraProgreso();
+            console.log(data);
+            cargarAcuerdo(data);
+        },
+        error: function (data) {
+            CerrarBarraProgreso();
+            Mensaje("No se encuentra el acuerdo" + data);
+        }
+    });
+});
+$('#txtAcuerdo').keyup(function(e){
+    if(e.keyCode == 13)
+    {
+        $(this).trigger("enterKey");
+    }
+});
+
 function consultarLimites(){
-    cargarTablaLimites(json)
+
+    if($('#txtAcuerdo').val()){
+        // cargarAcuerdo();
+        cargarTablaLimites(json);
+        $('#nuevoLimite').prop('disabled',false);
+    }else{
+        $('input[type=text]').val("");
+        $('input[type=number]').val("");
+        Mensaje("No se encuentra el acuerdo");
+        var tabla = $('#tablaAutorizacion').DataTable();
+        tabla.clear().draw();
+        $('#nuevoLimite').prop('disabled',true);
+        $('#selectMonedas').val("-1").selectpicker("refresh");
+        $('#selectTipoSeleccion').val("-1").selectpicker("refresh");
+
+    }
 }
 
 var table;
@@ -203,6 +305,7 @@ function cargarTablaLimites(datos) {
             searching: false,
             data: datos,
             select: true,
+            // bPaginate: false,
             language: {
                 select: {
                     rows: {
@@ -217,7 +320,11 @@ function cargarTablaLimites(datos) {
                 {"data": "situación"},
                 {"data": "importe"},
                 {"data": "fechaAlta"},
-                {"data": "fechaVto"}
+                {"data": "fechaVto"},
+                {"data": "cOperaciones"},
+                {"data": "concepto"},
+                {"data": "numAutorizacion"},
+                {"data": "empleado"}
             ]
         });
 }

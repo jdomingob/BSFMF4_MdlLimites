@@ -128,7 +128,7 @@ function removeHasError(element) {
 
 $("#btnTest").click(function () {
     var dato =  $("#selectTest").val();
-    msjExito(dato);
+    Mensaje(dato);
 });
 
 function cargarTabla(datos) {

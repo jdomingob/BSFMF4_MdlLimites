@@ -22,3 +22,25 @@ wso2:
       context-path: /wsBsfOperacionesSucursales
       encrypt: ${wso2.scheme}://${wso2.esb.host}:${wso2.esb.port}${wso2.esb.wsBsfOperacionesSucursales.context-path}/encrypt
       decrypt: ${wso2.scheme}://${wso2.esb.host}:${wso2.esb.port}${wso2.esb.wsBsfOperacionesSucursales.context-path}/decrypt
+    wsBsfLimitesDescubiertosEx:
+      context-path: /wsBsfLimitesDescubiertosEx
+      guardar-limite: ${wso2.scheme}://${wso2.esb.host}:${wso2.esb.port}${wso2.esb.wsBsfLimitesDescubiertosEx.context-path}/guardar-limite
+      surpimir-limite: ${wso2.scheme}://${wso2.esb.host}:${wso2.esb.port}${wso2.esb.wsBsfLimitesDescubiertosEx.context-path}/surpimir-limite
+      consulta-limite: ${wso2.scheme}://${wso2.esb.host}:${wso2.esb.port}${wso2.esb.wsBsfLimitesDescubiertosEx.context-path}/consulta-limite
+
+  as:
+    host: 172.26.9.65
+    port: 9766
+    asBsfConsultaTransacciones:
+      context-path: /asBsfConsultaTransacciones
+      consultaDatosPorAcuerdo: ${wso2.scheme}://${wso2.as.host}:${wso2.as.port}${wso2.as.asBsfConsultaTransacciones.context-path}/consultaDatosPorAcuerdo
+
+cat:
+  scheme: http
+  jar:
+    host: 172.26.9.65
+    port: 9100
+    bsfCatalogue:
+      context-path: /bsf-catalogue
+      claveOperacion: ${cat.scheme}://${cat.jar.host}:${cat.jar.port}${cat.jar.bsfCatalogue.context-path}/diario/claveOperacion/getAll
+      generalMoneda: ${cat.scheme}://${cat.jar.host}:${cat.jar.port}${cat.jar.bsfCatalogue.context-path}/personaMoral/generalMoneda

@@ -7,6 +7,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Component;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 @Component
@@ -36,6 +37,41 @@ public class UtilImpl<T> implements Util<T> {
 		} catch (Exception e) {
 			return null;
 		}
+	}
+
+	public boolean checarNulos(T obj) {
+		boolean bandera = false;
+		String cadena = "Los atributos: ";
+		Field[] atributos = obj.getClass().getDeclaredFields();
+		for (Field atributo : atributos) {
+			atributo.setAccessible(true);
+			try {
+				/**
+				 * Se asigna una condicion y se le especifica que tarea quiere que realize
+				 */
+				//System.out.println("Valor"+atributo.get(obj).toString());
+				if (atributo.get(obj) == null) {
+					/**
+					 * Aqui por ejemplo se le indica que si se cumple la condicion, a ese objeto/atributo, le asigne el valor de 1
+					 */
+					if (atributo.getType().isAssignableFrom(Number.class))
+						atributo.set(obj, 0);
+					if (atributo.getType().isAssignableFrom(String.class))
+						atributo.set(obj,"");
+					bandera = true;
+				}
+
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+
+		}
+		return bandera;
 	}
 
 	/**

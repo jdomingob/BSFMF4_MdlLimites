@@ -10,6 +10,6 @@ import lombok.experimental.PackagePrivate;
 public class ConsultarLimites {
 
     @JsonProperty("OTR_CONSULTA_GLOBAL_AT_TR")
-    OTRCONSULTAGLOBALATTR oTRCONSULTAGLOBALATTR;
+    OTRCONSULTAGLOBALATTR consultaGlobalAtTr;
 
 }

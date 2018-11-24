@@ -42,7 +42,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="margin-top-1-5" style="margin-left:-35px">
+                        <div class="margin-top-1-5" id="datosLimite" style="margin-left:-35px">
                         <fieldset class=" scheduler-border z-depth-3">
                             <legend class="scheduler-border">Datos</legend>
                             <div class="margin-top-0-8 margin-left-5pct" style="margin-left:70px">
@@ -63,15 +63,14 @@
                                     <div class="col-md-5 no-padding-left">
                                         <input type="text" id="txtImporteAut" class="form-control noAlfanumericos">
                                     </div>
-                                    <div class="col-md-3 no-padding-left" id="selectPersonaMoral">
+                                    <div class="col-md-3 no-padding-left" id="monedasContModalSelect">
                                         <select class=" selectpicker form-control" data-size="5"
-                                                id="selectIdOficialModBusPer" data-live-search="true"
+                                                id="selectMonedasModalSelect" data-live-search="true"
                                                 data-maxOptions="true">
                                             <option value="-1">SELECCCIONE</option>
-                                            <option th:each="selectIdOficialModBusPer : ${catalogoTipoId}"
-                                                    th:value="${selectIdOficialModBusPer.identificador}"
-                                                    th:text="${selectIdOficialModBusPer.nombre}"
-                                                    th:data-subtext="${selectIdOficialModBusPer.descripcion}"></option>
+                                            <option th:each="selectMonedas : ${catalogoMonedas}"
+                                                    th:text="${selectMonedas.codigo}"
+                                                    th:data-subtext="${selectMonedas.descripcion}"></option>
                                         </select>
                                     </div>
                                 </div>
@@ -112,11 +111,16 @@
                                     <div class="col-md-1 margin-top-0-8">
                                         <label class="pull-right text-nowrap">C Operación:</label>
                                     </div>
-                                    <div class="col-md-3 no-padding-left">
-                                        <input type="text" id="txtOperacion" class="form-control noAlfanumericos">
-                                    </div>
-                                    <div class="col-md-5 no-padding-left">
-                                        <input type="text" id="txtOperacion2" class="form-control noAlfanumericos">
+                                    <div class="col-md-8 no-padding-left" id="selectCOperacionescontainer">
+                                        <select class=" selectpicker form-control" data-size="5"
+                                                id="selectCOperaciones" data-live-search="true"
+                                                data-maxOptions="true">
+                                            <option value="-1">SELECCCIONE</option>
+                                            <option th:each="selectCOperaciones : ${catalogoOperaciones}"
+                                                    th:value="${selectCOperaciones.identificador}"
+                                                    th:text="${selectCOperaciones.nombre}"
+                                                    th:data-subtext="${selectCOperaciones.descripcion}"></option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row margin-top-0-8">
